@@ -133,3 +133,9 @@ impl<'a, F: Field> ToBytesGadget<F> for &'a [UInt8<F>] {
         Ok(self.to_vec())
     }
 }
+
+impl<F: Field> ToBytesGadget<F> for UInt8<F> {
+    fn to_bytes(&self) -> Result<Vec<UInt8<F>>, SynthesisError> {
+        Ok(vec![self.clone()])
+    }
+}
